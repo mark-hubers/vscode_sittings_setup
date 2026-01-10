@@ -20,11 +20,13 @@ TESTING DIFFERENT TEXT ELEMENTS:
    0123456789
    !@#$%^&*()_+-=[]{}|;':",.<>?/
    Variables: $PATH, %USERPROFILE%, ${HOME}
+   this is a test to see if it workspace
 
 4. File paths and commands:
    /usr/local/bin/myapp
    C:\Users\YourName\Documents\file.txt
    ~/workspace/project/src/main.py
+
 
 5. Configuration-style text:
    host=localhost
