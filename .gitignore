@@ -1,0 +1,16 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code internal files
+.claude/
+
+# VSCode workspace files (optional - uncomment if you don't want to track these)
+# .vscode/
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*~

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML Test File for Theme Visibility Testing -->
+<!-- TESTWORD: Use Cmd+F to find this TESTWORD throughout the file -->
+<!-- EXAMPLE: This EXAMPLE word appears multiple times for testing -->
+<company name="TechCorp">
+    <!-- SAMPLE company data with DUPLICATE and REPEATED test markers -->
+    <departments>
+        <department id="eng" name="Engineering">
+            <!-- TESTWORD department section -->
+            <manager>Bob Johnson</manager>
+            <budget currency="USD">5000000</budget>
+            <employees>
+                <!-- EXAMPLE employee list -->
+                <employee id="001" status="active">
+                    <!-- SAMPLE employee data -->
+                    <name>Alice Smith</name>
+                    <role>Senior Developer</role>
+                    <skills>
+                        <!-- DUPLICATE skill list -->
+                        <skill level="expert">Python</skill>
+                        <skill level="expert">JavaScript</skill>
+                        <skill level="advanced">Docker</skill>
+                    </skills>
+                    <contact>
+                        <email>alice.smith@techcorp.com</email>
+                        <phone>+1-555-0101</phone>
+                    </contact>
+                </employee>
+                <employee id="002" status="active">
+                    <name>David Chen</name>
+                    <role>DevOps Engineer</role>
+                    <skills>
+                        <skill level="expert">Kubernetes</skill>
+                        <skill level="expert">AWS</skill>
+                        <skill level="advanced">Terraform</skill>
+                    </skills>
+                    <contact>
+                        <email>david.chen@techcorp.com</email>
+                        <phone>+1-555-0102</phone>
+                    </contact>
+                </employee>
+            </employees>
+        </department>
+
+        <department id="data" name="Data Team">
+            <manager>Helen Martinez</manager>
+            <budget currency="USD">2000000</budget>
+            <employees>
+                <employee id="101" status="active">
+                    <name>Grace Lee</name>
+                    <role>Data Scientist</role>
+                    <skills>
+                        <skill level="expert">Python</skill>
+                        <skill level="expert">Machine Learning</skill>
+                        <skill level="advanced">Statistics</skill>
+                    </skills>
+                    <contact>
+                        <email>grace.lee@techcorp.com</email>
+                        <phone>+1-555-0201</phone>
+                    </contact>
+                </employee>
+            </employees>
+        </department>
+    </departments>
+
+    <projects>
+        <project id="p001" status="active" priority="high">
+            <name>Cloud Migration</name>
+            <description>Migrate legacy systems to AWS cloud infrastructure</description>
+            <timeline>
+                <start>2024-01-01</start>
+                <end>2024-12-31</end>
+            </timeline>
+            <team>
+                <member role="lead">002</member>
+                <member role="developer">001</member>
+            </team>
+        </project>
+
+        <project id="p002" status="planning" priority="medium">
+            <name>ML Pipeline</name>
+            <description>Build automated machine learning pipeline for data analysis</description>
+            <timeline>
+                <start>2024-06-01</start>
+                <end>2025-03-31</end>
+            </timeline>
+            <team>
+                <member role="lead">101</member>
+            </team>
+        </project>
+    </projects>
+
+    <configuration>
+        <!-- REPEATED configuration section -->
+        <settings>
+            <!-- TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED - all test words together -->
+            <setting key="max_vacation_days" value="25" type="integer"/>
+            <setting key="remote_work_allowed" value="true" type="boolean"/>
+            <setting key="office_location" value="San Francisco" type="string"/>
+            <setting key="testword_marker" value="TESTWORD" type="string"/>
+            <setting key="example_marker" value="EXAMPLE" type="string"/>
+        </settings>
+    </configuration>
+</company>

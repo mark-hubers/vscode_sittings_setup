@@ -1,0 +1,261 @@
+// Jenkinsfile Test File for Theme Visibility Testing
+// This file contains various Jenkins Pipeline syntax elements
+// TESTWORD: Use Cmd+F to find this TESTWORD throughout the file
+// EXAMPLE: This EXAMPLE word appears multiple times for testing
+
+// Declarative Pipeline - SAMPLE pipeline
+pipeline {
+    agent {
+        label 'docker'  // TESTWORD agent
+    }
+
+    // Environment variables - DUPLICATE environment section
+    environment {
+        APP_NAME = 'my-application'  // EXAMPLE app name
+        DOCKER_REGISTRY = 'registry.example.com'  // REPEATED registry
+        DOCKER_IMAGE = "${DOCKER_REGISTRY}/${APP_NAME}"  // TESTWORD image
+        BUILD_VERSION = "${env.BUILD_NUMBER}"  // SAMPLE version
+        AWS_REGION = 'us-east-1'  // DUPLICATE region
+        DEPLOY_ENV = 'production'  // EXAMPLE environment
+    }
+
+    // Build parameters
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'staging', 'production'],
+            description: 'Target environment'
+        )
+        booleanParam(
+            name: 'RUN_TESTS',
+            defaultValue: true,
+            description: 'Run test suite'
+        )
+        string(
+            name: 'BRANCH_NAME',
+            defaultValue: 'main',
+            description: 'Git branch to build'
+        )
+    }
+
+    // Build options
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timeout(time: 1, unit: 'HOURS')
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    // Triggers
+    triggers {
+        pollSCM('H/15 * * * *')
+        cron('H 2 * * *')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Checking out code from ${params.BRANCH_NAME}"
+                checkout scm
+                script {
+                    env.GIT_COMMIT_SHORT = sh(
+                        script: "git rev-parse --short HEAD",
+                        returnStdout: true
+                    ).trim()
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building version ${BUILD_VERSION}"
+                sh '''
+                    echo "Compiling application..."
+                    npm install
+                    npm run build
+                '''
+            }
+        }
+
+        stage('Test') {
+            when {
+                expression { params.RUN_TESTS == true }
+            }
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        sh 'npm run test:unit'
+                    }
+                    post {
+                        always {
+                            junit 'test-results/unit/*.xml'
+                        }
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        sh 'npm run test:integration'
+                    }
+                    post {
+                        always {
+                            junit 'test-results/integration/*.xml'
+                        }
+                    }
+                }
+                stage('Linting') {
+                    steps {
+                        sh 'npm run lint'
+                    }
+                }
+            }
+        }
+
+        stage('Security Scan') {
+            steps {
+                script {
+                    try {
+                        sh 'npm audit --production'
+                    } catch (Exception e) {
+                        echo "Security vulnerabilities found: ${e}"
+                        currentBuild.result = 'UNSTABLE'
+                    }
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE}:${BUILD_VERSION}")
+                    docker.build("${DOCKER_IMAGE}:latest")
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", 'docker-credentials') {
+                        docker.image("${DOCKER_IMAGE}:${BUILD_VERSION}").push()
+                        docker.image("${DOCKER_IMAGE}:latest").push()
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                allOf {
+                    branch 'main'
+                    expression { params.ENVIRONMENT == 'production' }
+                }
+            }
+            steps {
+                script {
+                    def deploymentConfig = readJSON file: 'deployment-config.json'
+
+                    // Deploy to Kubernetes
+                    sh """
+                        kubectl set image deployment/${APP_NAME} \\
+                            ${APP_NAME}=${DOCKER_IMAGE}:${BUILD_VERSION} \\
+                            --namespace=${DEPLOY_ENV}
+
+                        kubectl rollout status deployment/${APP_NAME} \\
+                            --namespace=${DEPLOY_ENV} \\
+                            --timeout=5m
+                    """
+
+                    echo "Deployed version ${BUILD_VERSION} to ${DEPLOY_ENV}"
+                }
+            }
+        }
+
+        stage('Smoke Tests') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                script {
+                    retry(3) {
+                        sh '''
+                            sleep 10
+                            curl -f https://example.com/health || exit 1
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline execution completed"
+            cleanWs()
+        }
+        success {
+            echo "Build succeeded!"
+            slackSend(
+                color: 'good',
+                message: "Build #${BUILD_NUMBER} succeeded for ${APP_NAME}"
+            )
+        }
+        failure {
+            echo "Build failed!"
+            slackSend(
+                color: 'danger',
+                message: "Build #${BUILD_NUMBER} failed for ${APP_NAME}"
+            )
+            emailext(
+                subject: "Jenkins Build Failed: ${APP_NAME}",
+                body: "Build ${BUILD_NUMBER} failed. Check console output.",
+                to: 'devops@example.com'
+            )
+        }
+        unstable {
+            echo "Build is unstable"
+        }
+    }
+}
+
+// Scripted Pipeline Example
+node('docker') {
+    def app
+
+    try {
+        stage('Checkout') {
+            checkout scm
+        }
+
+        stage('Build') {
+            app = docker.build("my-app:${env.BUILD_ID}")
+        }
+
+        stage('Test') {
+            app.inside {
+                sh 'npm test'
+            }
+        }
+
+        if (env.BRANCH_NAME == 'main') {
+            stage('Push') {
+                docker.withRegistry('https://registry.example.com', 'credentials-id') {
+                    app.push("${env.BUILD_ID}")
+                    app.push("latest")
+                }
+            }
+        }
+    } catch (Exception e) {
+        currentBuild.result = 'FAILURE'
+        throw e
+    } finally {
+        cleanWs()
+    }
+}
+
+// TODO: Add performance testing stage - TESTWORD marker
+// FIXME: Update Docker registry URL - EXAMPLE marker
+// NOTE: This pipeline requires Docker and kubectl - SAMPLE DUPLICATE REPEATED markers
+// TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED - all test words together

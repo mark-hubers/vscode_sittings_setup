@@ -1,0 +1,121 @@
+Plain Text File - Testing Visibility
+====================================
+TESTWORD - Use Cmd+F to find this TESTWORD throughout the file
+EXAMPLE - This EXAMPLE word appears multiple times for testing
+
+This is a plain text file for testing text editor visibility and colors.
+
+TESTING DIFFERENT TEXT ELEMENTS:
+
+1. Regular paragraph text - SAMPLE paragraph
+   This is what most of your text files will look like. TESTWORD
+   Multiple lines of plain text without any special formatting. EXAMPLE
+   Can you see this clearly with your theme? DUPLICATE
+
+2. UPPERCASE TEXT FOR HEADERS - REPEATED header
+   IMPORTANT NOTICE IN ALL CAPS - TESTWORD notice
+   THIS SHOULD BE VISIBLE - EXAMPLE visibility
+
+3. Numbers and special characters:
+   0123456789
+   !@#$%^&*()_+-=[]{}|;':",.<>?/
+   Variables: $PATH, %USERPROFILE%, ${HOME}
+
+4. File paths and commands:
+   /usr/local/bin/myapp
+   C:\Users\YourName\Documents\file.txt
+   ~/workspace/project/src/main.py
+
+5. Configuration-style text:
+   host=localhost
+   port=5432
+   debug=true
+   max_connections=100
+
+6. Log-style entries:
+   [2024-01-10 10:30:45] INFO: Application started
+   [2024-01-10 10:30:46] DEBUG: Loading configuration
+   [2024-01-10 10:30:47] ERROR: Connection failed
+   [2024-01-10 10:30:48] WARN: Retrying connection
+
+7. Lists and bullets:
+   - First item
+   - Second item
+   - Third item
+     * Nested item
+     * Another nested item
+
+8. TODO and action items:
+   TODO: Complete the project documentation - TESTWORD
+   FIXME: Update the broken links - EXAMPLE
+   NOTE: Remember to backup before deploying - SAMPLE
+   IMPORTANT: Review security settings - DUPLICATE REPEATED
+
+9. Code-like text (but in plain text):
+   function hello() {
+       print("Hello World")
+   }
+
+10. Mixed content with indentation:
+    Main section
+        Subsection 1
+            Detail A
+            Detail B
+        Subsection 2
+            Detail C
+            Detail D
+
+11. ASCII art / boxes:
+    +------------------+
+    |  Important Box   |
+    +------------------+
+    |  Content here    |
+    +------------------+
+
+12. URLs and emails:
+    https://example.com
+    http://localhost:8080
+    user@example.com
+    support@company.org
+
+13. Quotes and messages:
+    "This is a quoted message"
+    'Another quoted message'
+    `Backtick quoted text`
+
+14. Version numbers and dates:
+    Version: 1.2.3
+    Date: 2024-01-10
+    Build: 20240110.1534
+
+15. Long continuous text for readability testing:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur.
+
+VISIBILITY CHECKLIST:
+=====================
+[ ] Can you easily read all the text above?
+[ ] Is the contrast good between text and background?
+[ ] Are different types of content distinguishable?
+[ ] Can you see indentation clearly?
+[ ] Are special characters visible?
+[ ] Is the cursor easy to find?
+[ ] Can you see the current line highlight?
+
+If you want this to look like an old terminal with bright green or yellow text,
+check out the docs/04-text-file-styling.md guide!
+
+TEST WORDS FOR FIND/MATCH:
+==========================
+TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED
+TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED
+TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED
+
+Use Cmd+F to search for any of these words throughout the file!
+
+================================================================================
+End of plain text test file
+================================================================================

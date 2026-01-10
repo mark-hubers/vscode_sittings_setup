@@ -1,0 +1,166 @@
+# YAML Test File for Theme Visibility Testing
+# This file contains various YAML syntax elements
+# TESTWORD: Use Cmd+F to find this TESTWORD throughout the file
+# EXAMPLE: This EXAMPLE word appears multiple times for testing
+
+# Simple key-value pairs - SAMPLE key-value pairs
+name: "John Doe"  # TESTWORD name
+age: 30  # EXAMPLE age
+active: true  # DUPLICATE flag
+balance: 1234.56  # REPEATED balance
+empty_value: null  # TESTWORD null value
+
+# Nested objects (mappings)
+person:
+  firstName: "John"
+  lastName: "Doe"
+  contact:
+    email: "john.doe@example.com"
+    phone: "+1-555-0123"
+  address:
+    street: "123 Main St"
+    city: "Springfield"
+    state: "IL"
+    zip: "62701"
+
+# Lists (sequences)
+fruits:
+  - apple
+  - banana
+  - orange
+  - grape
+
+# Inline list syntax
+colors: [red, green, blue, yellow]
+
+# List of objects
+employees:
+  - name: "Alice Smith"
+    role: "Developer"
+    skills:
+      - Python
+      - JavaScript
+      - Docker
+    years_experience: 5
+
+  - name: "Bob Jones"
+    role: "DevOps Engineer"
+    skills:
+      - Kubernetes
+      - AWS
+      - Terraform
+    years_experience: 8
+
+# Complex nested structures
+infrastructure:
+  aws:
+    regions:
+      - us-east-1
+      - us-west-2
+    services:
+      ec2:
+        instance_type: "t3.medium"
+        count: 3
+      rds:
+        engine: "postgresql"
+        version: "14.5"
+  kubernetes:
+    version: "1.27"
+    namespaces:
+      - default
+      - production
+      - staging
+
+# Multi-line strings - literal style (preserves newlines)
+description_literal: |
+  This is a multi-line string
+  that preserves line breaks.
+  Each line is kept as-is.
+  Great for scripts or formatted text.
+
+# Multi-line strings - folded style (converts to single line)
+description_folded: >
+  This is a multi-line string
+  that will be folded into
+  a single line with spaces.
+  Good for long descriptions.
+
+# Anchors and aliases (reusable values)
+defaults: &default_config
+  timeout: 30
+  retries: 3
+  log_level: "info"
+
+service_a:
+  <<: *default_config
+  name: "Service A"
+  port: 8080
+
+service_b:
+  <<: *default_config
+  name: "Service B"
+  port: 8081
+  retries: 5  # Override default
+
+# Environment variables
+environment:
+  DATABASE_URL: "postgresql://localhost:5432/mydb"
+  API_KEY: "${API_KEY}"  # Reference to environment variable
+  DEBUG: "false"
+  MAX_CONNECTIONS: 100
+
+# Tags for explicit types
+explicit_string: !!str 123456
+explicit_float: !!float 42
+explicit_bool: !!bool "true"
+
+# AWS CloudFormation-style configuration example
+Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: "ami-0abcdef1234567890"
+      InstanceType: "t3.micro"
+      Tags:
+        - Key: "Name"
+          Value: "MyInstance"
+        - Key: "Environment"
+          Value: "Production"
+
+# Kubernetes-style configuration example
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.21
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      env:
+        - name: ENVIRONMENT
+          value: "production"
+      resources:
+        limits:
+          memory: "512Mi"
+          cpu: "1000m"
+        requests:
+          memory: "256Mi"
+          cpu: "500m"
+
+# Comments can be placed anywhere
+database_config:  # Main database configuration
+  host: "localhost"  # Database host
+  port: 5432  # PostgreSQL default port
+  # username: "admin"  # Commented out line
+  password: "secret123"
+
+# TODO: Add more database replicas - TESTWORD marker
+# FIXME: Update password to use secrets manager - EXAMPLE marker
+# NOTE: This configuration is for development only - SAMPLE DUPLICATE REPEATED markers
+# TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED - all test words together

@@ -1,0 +1,21 @@
+Name,Role,Years Experience,Skills,Location,Salary,Department,Manager,TestData
+Alice Smith,Senior Developer,8,"Python,JavaScript,Docker",San Francisco,145000,Engineering,Bob Johnson,TESTWORD
+Bob Johnson,Engineering Manager,12,"Leadership,Architecture,Python",San Francisco,185000,Engineering,Carol White,EXAMPLE
+Carol White,VP Engineering,15,"Strategy,Leadership,Cloud",San Francisco,250000,Executive,CEO,SAMPLE
+David Chen,DevOps Engineer,6,"Kubernetes,AWS,Terraform",Austin,125000,Engineering,Bob Johnson,DUPLICATE
+Emma Wilson,Frontend Developer,4,"React,TypeScript,CSS",Remote,105000,Engineering,Bob Johnson,REPEATED
+Frank Garcia,Backend Developer,5,"Python,PostgreSQL,Redis",New York,115000,Engineering,Bob Johnson,TESTWORD
+Grace Lee,Data Scientist,7,"Python,ML,Statistics",Seattle,140000,Data,Helen Martinez,EXAMPLE
+Helen Martinez,Data Team Lead,10,"Analytics,Python,SQL",Seattle,160000,Data,Carol White,SAMPLE
+Ian Kumar,Security Engineer,9,"Security,Penetration Testing,Compliance",Boston,155000,Security,Carol White,DUPLICATE
+Julia Rodriguez,Product Manager,6,"Product Strategy,Agile,Stakeholder Management",San Francisco,135000,Product,Kevin Brown,REPEATED
+Kevin Brown,Director of Product,11,"Product Vision,Strategy,Roadmapping",San Francisco,190000,Product,Carol White
+Lisa Thompson,QA Engineer,5,"Test Automation,Selenium,CI/CD",Chicago,95000,Engineering,Bob Johnson
+Michael Park,Site Reliability Engineer,7,"Monitoring,Incident Response,Kubernetes",Portland,130000,Engineering,Bob Johnson
+Nina Patel,UX Designer,6,"User Research,Figma,Prototyping",Los Angeles,120000,Design,Oscar Green
+Oscar Green,Design Lead,9,"Design Systems,Leadership,Strategy",Los Angeles,155000,Design,Kevin Brown
+Paul Zhang,Solutions Architect,10,"System Design,AWS,Consulting",Miami,165000,Engineering,Carol White
+Quinn Taylor,Technical Writer,4,"Documentation,API Docs,Tutorials",Remote,85000,Engineering,Bob Johnson
+Rachel Adams,Sales Engineer,5,"Demos,Customer Support,Solution Design",New York,125000,Sales,Steve Wilson
+Steve Wilson,VP Sales,14,"Sales Strategy,Team Building,Enterprise Sales",New York,240000,Executive,CEO
+Tina Morris,Customer Success,3,"Customer Relations,Training,Support",Dallas,75000,Customer Success,Steve Wilson

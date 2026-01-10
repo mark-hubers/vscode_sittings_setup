@@ -1,0 +1,183 @@
+{
+  "name": "John Doe",
+  "age": 30,
+  "active": true,
+  "balance": 1234.56,
+  "emptyValue": null,
+  "person": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "contact": {
+      "email": "john.doe@example.com",
+      "phone": "+1-555-0123"
+    },
+    "address": {
+      "street": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "zip": "62701"
+    }
+  },
+  "fruits": [
+    "apple",
+    "banana",
+    "orange",
+    "grape"
+  ],
+  "colors": ["red", "green", "blue", "yellow"],
+  "employees": [
+    {
+      "name": "Alice Smith",
+      "role": "Developer",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "Docker"
+      ],
+      "yearsExperience": 5,
+      "certifications": {
+        "aws": ["Solutions Architect", "Developer Associate"],
+        "kubernetes": ["CKA", "CKAD"]
+      }
+    },
+    {
+      "name": "Bob Jones",
+      "role": "DevOps Engineer",
+      "skills": [
+        "Kubernetes",
+        "AWS",
+        "Terraform"
+      ],
+      "yearsExperience": 8,
+      "certifications": {
+        "aws": ["DevOps Professional"],
+        "gcp": ["Professional Cloud Architect"]
+      }
+    }
+  ],
+  "infrastructure": {
+    "aws": {
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "services": {
+        "ec2": {
+          "instanceType": "t3.medium",
+          "count": 3,
+          "tags": {
+            "Environment": "Production",
+            "ManagedBy": "Terraform"
+          }
+        },
+        "rds": {
+          "engine": "postgresql",
+          "version": "14.5",
+          "storage": {
+            "type": "gp3",
+            "size": 100,
+            "iops": 3000
+          }
+        },
+        "s3": {
+          "buckets": [
+            {
+              "name": "app-data-prod",
+              "versioning": true,
+              "encryption": "AES256"
+            },
+            {
+              "name": "app-logs-prod",
+              "versioning": false,
+              "lifecycleRules": [
+                {
+                  "id": "DeleteOldLogs",
+                  "status": "Enabled",
+                  "expiration": {
+                    "days": 90
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "kubernetes": {
+      "version": "1.27",
+      "namespaces": [
+        "default",
+        "production",
+        "staging"
+      ],
+      "resources": {
+        "deployments": 15,
+        "services": 12,
+        "ingresses": 5
+      }
+    }
+  },
+  "configuration": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "username": "admin",
+      "password": "secret123",
+      "poolSize": 20,
+      "timeout": 30000,
+      "ssl": {
+        "enabled": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "api": {
+      "baseUrl": "https://api.example.com",
+      "version": "v2",
+      "timeout": 5000,
+      "retries": 3,
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "MyApp/1.0"
+      },
+      "endpoints": {
+        "users": "/api/v2/users",
+        "products": "/api/v2/products",
+        "orders": "/api/v2/orders"
+      }
+    },
+    "features": {
+      "authentication": true,
+      "twoFactorAuth": false,
+      "emailVerification": true,
+      "rateLimiting": {
+        "enabled": true,
+        "maxRequests": 100,
+        "windowMs": 60000
+      }
+    }
+  },
+  "environment": {
+    "NODE_ENV": "production",
+    "PORT": 3000,
+    "LOG_LEVEL": "info",
+    "MAX_UPLOAD_SIZE": "10MB",
+    "ALLOWED_ORIGINS": [
+      "https://example.com",
+      "https://www.example.com"
+    ]
+  },
+  "metadata": {
+    "version": "1.2.3",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-20T14:45:00Z",
+    "author": {
+      "name": "DevOps Team",
+      "email": "devops@example.com"
+    },
+    "tags": ["production", "critical", "monitored", "TESTWORD", "EXAMPLE", "SAMPLE"],
+    "notes": "This configuration file is automatically generated and should not be edited manually.",
+    "testWords": "TESTWORD EXAMPLE SAMPLE DUPLICATE REPEATED - all test words together for find/match testing",
+    "searchTerms": ["TESTWORD", "EXAMPLE", "SAMPLE", "DUPLICATE", "REPEATED"]
+  }
+}

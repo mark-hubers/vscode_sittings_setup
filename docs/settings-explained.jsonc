@@ -1,0 +1,277 @@
+{
+    // ============================================================================
+    // VSCODE SETTINGS - CUSTOMIZED FOR HIGH VISIBILITY
+    // ============================================================================
+    // This file documents all customizations made to improve visibility,
+    // bright colors, consistent highlights, and better UI borders.
+    // Date: 2026-01-10
+    // Based on: Default Dark+ theme (Dracula Pro was too stubborn)
+    // ============================================================================
+
+    // THEME SELECTION
+    // We switched from Dracula Pro to Default Dark+ because it's more flexible
+    // and allows text file customization
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "workbench.colorTheme": "Default Dark+",
+
+    // ============================================================================
+    // COLOR CUSTOMIZATIONS
+    // ============================================================================
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {
+            // EDITOR BACKGROUND & FOREGROUND
+            // CUSTOMIZED: Changed to pure black (#000000) - no more gray!
+            "editor.background": "#000000",
+            "editor.foreground": "#ffffff",
+
+            // LINE NUMBERS
+            // CUSTOMIZED: Made line numbers bright and visible
+            "editorLineNumber.foreground": "#8be9fd",           // Bright cyan
+            "editorLineNumber.activeForeground": "#50fa7b",    // Bright green for active line
+
+            // INDENT GUIDES & WHITESPACE
+            // CUSTOMIZED: Made indent guides and whitespace dots much brighter
+            "editorIndentGuide.background": "#6272a4",         // Brighter gray
+            "editorIndentGuide.activeBackground": "#ff79c6",   // Hot pink for active guide
+            "editorWhitespace.foreground": "#6272a4",          // Brighter whitespace dots
+
+            // CURRENT LINE & SELECTION
+            "editor.lineHighlightBackground": "#1a1a1a",       // Subtle current line highlight
+            "editor.selectionBackground": "#44475a",           // Selected text background
+
+            // BRACKET MATCHING
+            "editorBracketMatch.border": "#ff79c6",            // Hot pink border
+            "editorBracketMatch.background": "#ff79c633",      // Transparent pink background
+
+            // FIND/SEARCH HIGHLIGHTING
+            // CUSTOMIZED: Orange/yellow background with BRIGHT YELLOW borders
+            "editor.findMatchBackground": "#ffaa0080",         // Current find match
+            "editor.findMatchHighlightBackground": "#ffaa0050", // Other find matches
+            "editor.findMatchBorder": "#ffff00",               // BRIGHT YELLOW border
+            "editor.findRangeHighlightBackground": "#ffaa0030",
+
+            // WORD SELECTION HIGHLIGHTING
+            // CUSTOMIZED: Green background with BRIGHT GREEN borders
+            // When you click on a word, all instances get these colors
+            "editor.wordHighlightBackground": "#00ff6650",      // Green background
+            "editor.wordHighlightStrongBackground": "#00ff6670",
+            "editor.wordHighlightBorder": "#00ff00",            // BRIGHT GREEN border
+            "editor.wordHighlightStrongBorder": "#00ff00"
+        },
+
+        // Keeping Dracula Pro config in case user wants to switch back
+        "[Dracula Pro]": {
+            // ... (kept for reference)
+        },
+
+        // GLOBAL COLOR OVERRIDES
+        // CUSTOMIZED: These apply to ALL themes to ensure consistency
+
+        // Find/Search colors (repeated globally to override language-specific settings)
+        "editor.findMatchBackground": "#ffaa0080",
+        "editor.findMatchHighlightBackground": "#ffaa0050",
+        "editor.findMatchBorder": "#ffff00",
+        "editor.findRangeHighlightBackground": "#ffaa0030",
+
+        // Word highlight colors (repeated globally)
+        "editor.wordHighlightBackground": "#00ff6650",
+        "editor.wordHighlightStrongBackground": "#00ff6670",
+        "editor.wordHighlightBorder": "#00ff00",
+        "editor.wordHighlightStrongBorder": "#00ff00",
+
+        // ALL BORDERS - UNIFIED HOT PINK COLOR
+        // CUSTOMIZED: User wanted all borders to be the same color (#ff79c6 hot pink)
+        "editorGroup.border": "#ff79c6",                       // Between split editors
+        "editorGroupHeader.tabsBorder": "#ff79c6",            // Tab area border
+        "panel.border": "#ff79c6",                             // Terminal/output panel
+        "sideBar.border": "#ff79c6",                           // File explorer sidebar
+        "sideBarSectionHeader.border": "#ff79c6",             // Sidebar sections
+        "tab.activeBorder": "#ff79c6",                         // Active tab indicator
+        "tab.activeBorderTop": "#ff79c6",                      // Top of active tab
+        "statusBar.border": "#ff79c6",                         // Bottom status bar
+        "titleBar.border": "#ff79c6",                          // Top title bar
+        "activityBar.border": "#ff79c6",                       // Left activity bar
+        "activityBarBadge.border": "#ff79c6",                 // Badge borders
+        "editorWidget.border": "#ff79c6",                      // Popups/widgets
+        "widget.border": "#ff79c6",                            // General widgets
+        "input.border": "#ff79c6",                             // Input fields
+        "dropdown.border": "#ff79c6",                          // Dropdown menus
+
+        // ADDITIONAL HIGHLIGHT TYPES
+        // CUSTOMIZED: Added to improve consistency across file types (TS, PS1, etc.)
+        "editor.selectionHighlightBackground": "#00ff6650",    // Selection highlight
+        "editor.selectionHighlightBorder": "#00ff00",          // With green border
+        "editor.findMatchForeground": "#ffffff",               // Find match text color
+        "editorOverviewRuler.findMatchForeground": "#ffff00",  // Overview ruler indicators
+        "editorOverviewRuler.wordHighlightForeground": "#00ff00",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#00ff00",
+
+        // HOVER & SYMBOL HIGHLIGHTING
+        // CUSTOMIZED: For languages with semantic highlighting (TypeScript, etc.)
+        "editor.hoverHighlightBackground": "#00ff6650",
+        "editor.linkedEditingBackground": "#00ff6650",
+        "editor.symbolHighlightBackground": "#00ff6650",
+        "editor.symbolHighlightBorder": "#00ff00",
+
+        // BRACKET COLORIZATION
+        "editorBracketHighlight.foreground1": "#50fa7b",       // Green
+        "editorBracketHighlight.foreground2": "#f1fa8c",       // Yellow
+        "editorBracketHighlight.foreground3": "#bd93f9"        // Purple
+    },
+
+    // ============================================================================
+    // SYNTAX HIGHLIGHTING - BRIGHT COLORS
+    // ============================================================================
+    "editor.tokenColorCustomizations": {
+        "[Default Dark+]": {
+            "textMateRules": [
+                {
+                    // COMMENTS - Bright cyan (NOT faded gray!)
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#8be9fd",    // Bright cyan
+                        "fontStyle": ""             // Remove italic
+                    }
+                },
+                {
+                    // STRINGS - Bright yellow
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#f1fa8c"     // Bright yellow
+                    }
+                },
+                {
+                    // KEYWORDS - Hot pink + BOLD
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#ff79c6",    // Hot pink
+                        "fontStyle": "bold"          // Make keywords bold
+                    }
+                },
+                {
+                    // FUNCTIONS - Bright green + BOLD
+                    "scope": ["entity.name.function", "support.function"],
+                    "settings": {
+                        "foreground": "#50fa7b",    // Bright green
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    // VARIABLES - White
+                    "scope": "variable",
+                    "settings": {
+                        "foreground": "#ffffff"
+                    }
+                },
+                {
+                    // NUMBERS - Bright purple
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#bd93f9"     // Bright purple
+                    }
+                },
+                {
+                    // PLAIN TEXT FILES - Bright green (still troublesome!)
+                    "scope": ["text.plain", "text"],
+                    "settings": {
+                        "foreground": "#00ff00"     // Bright green
+                    }
+                }
+            ]
+        }
+    },
+
+    // ============================================================================
+    // TEXT FILE CUSTOMIZATION (ATTEMPTED - STILL NOT WORKING)
+    // ============================================================================
+    "[plaintext]": {
+        "editor.foreground": "#00ff00",               // Bright green text
+        "editor.background": "#000000",               // Pure black background
+        "editor.tokenColorCustomizations": {
+            "textMateRules": [
+                {
+                    "scope": "*",                     // All scopes
+                    "settings": {
+                        "foreground": "#00ff00"       // Force bright green
+                    }
+                }
+            ]
+        }
+    },
+
+    "[log]": {
+        "editor.foreground": "#ffff00",               // Bright yellow for log files
+        "editor.background": "#000000"
+    },
+
+    // FILE ASSOCIATIONS
+    "files.associations": {
+        "*.txt": "plaintext",
+        "*.log": "log",
+        "*.text": "plaintext",
+        "README": "plaintext",
+        "LICENSE": "plaintext"
+    },
+
+    // ============================================================================
+    // SEMANTIC HIGHLIGHTING OVERRIDES
+    // ============================================================================
+    // CUSTOMIZED: Disabled for most languages to prevent color inconsistencies
+    "editor.semanticHighlighting.enabled": false,
+    "[plaintext]editor.foreground": "#00ff00",
+    "[plaintext]editor.semanticHighlighting.enabled": false,
+
+    // Per-language semantic highlighting disabled
+    "[typescript]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[powershell]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[javascript]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[python]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+
+    // ============================================================================
+    // EDITOR BEHAVIOR
+    // ============================================================================
+    "editor.occurrencesHighlight": "singleFile",      // Highlight word occurrences
+    "editor.selectionHighlight": true,                 // Highlight when selecting
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "editor.renderFinalNewline": "on",
+    "editor.wordWrap": "off",
+
+    // ============================================================================
+    // VISUAL ENHANCEMENTS
+    // ============================================================================
+    // Bracket pair colorization
+    "editor.bracketPairColorization.enabled": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.guides.bracketPairs": "active",
+
+    // Indent guides
+    "editor.guides.indentation": true,
+
+    // Whitespace visualization
+    "editor.renderWhitespace": "all",                  // Show all spaces/tabs
+
+    // ============================================================================
+    // UI PREFERENCES
+    // ============================================================================
+    // CUSTOMIZED: Disabled minimap (user requested - more screen space)
+    "editor.minimap.enabled": false,
+
+    // CUSTOMIZED: Enabled breadcrumbs (user likes it - shows file path/function)
+    "breadcrumbs.enabled": true,
+
+    // ============================================================================
+    // FONT & CURSOR
+    // ============================================================================
+    "editor.fontSize": 14,
+    "editor.lineHeight": 22,
+    "editor.cursorBlinking": "solid",                  // No blinking cursor
+    "editor.cursorWidth": 2
+}

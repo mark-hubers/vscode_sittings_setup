@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSCode UI Parts Reference - Visual Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #1e1e1e;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff79c6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .vscode-window {
+            border: 3px solid #ff79c6;
+            background: #252526;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .ui-part {
+            position: relative;
+            border: 2px solid #ff79c6;
+        }
+
+        .label {
+            position: absolute;
+            background: #ff79c6;
+            color: #000;
+            padding: 4px 12px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 10;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(255, 121, 198, 0.3);
+        }
+
+        .label.top-left { top: -2px; left: -2px; }
+        .label.top-right { top: -2px; right: -2px; }
+        .label.bottom-left { bottom: -2px; left: -2px; }
+        .label.bottom-right { bottom: -2px; right: -2px; }
+        .label.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        /* Title Bar */
+        .title-bar {
+            background: #323233;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            height: 600px;
+        }
+
+        /* Activity Bar */
+        .activity-bar {
+            width: 50px;
+            background: #333333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            gap: 15px;
+        }
+
+        .activity-icon {
+            width: 30px;
+            height: 30px;
+            background: #007acc;
+            border-radius: 4px;
+        }
+
+        /* Side Bar */
+        .side-bar {
+            width: 250px;
+            background: #252526;
+            border-right: 1px solid #ff79c6;
+            padding: 10px;
+        }
+
+        .side-bar-header {
+            color: #ccc;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .file-item {
+            color: #ccc;
+            font-size: 13px;
+            padding: 3px 0;
+        }
+
+        /* Editor Area */
+        .editor-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Tab Bar */
+        .tab-bar {
+            background: #2d2d2d;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ff79c6;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: #1e1e1e;
+            border-right: 1px solid #444;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        .tab.active {
+            background: #000000;
+            color: #fff;
+            border-bottom: 2px solid #ff79c6;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #1e1e1e;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            border-bottom: 1px solid #ff79c6;
+            color: #8be9fd;
+            font-size: 12px;
+        }
+
+        /* Editor */
+        .editor {
+            flex: 1;
+            background: #000000;
+            padding: 10px;
+            display: flex;
+        }
+
+        .line-numbers {
+            width: 50px;
+            color: #8be9fd;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-align: right;
+            padding-right: 10px;
+            user-select: none;
+        }
+
+        .code-area {
+            flex: 1;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .code-line {
+            margin: 2px 0;
+        }
+
+        .keyword { color: #ff79c6; font-weight: bold; }
+        .string { color: #f1fa8c; }
+        .comment { color: #8be9fd; }
+
+        /* Panel */
+        .panel {
+            background: #1e1e1e;
+            height: 180px;
+            border-top: 1px solid #ff79c6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-tabs {
+            background: #2d2d2d;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        .panel-tab {
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        .panel-tab.active {
+            color: #fff;
+            border-bottom: 2px solid #ff79c6;
+        }
+
+        .panel-content {
+            flex: 1;
+            padding: 10px;
+            color: #ccc;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: #007acc;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            border-top: 1px solid #ff79c6;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .status-left, .status-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Legend */
+        .legend {
+            margin-top: 30px;
+            background: #252526;
+            padding: 20px;
+            border: 2px solid #ff79c6;
+            border-radius: 8px;
+        }
+
+        .legend h2 {
+            color: #ff79c6;
+            margin-bottom: 15px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .legend-item {
+            padding: 10px;
+            background: #1e1e1e;
+            border-left: 3px solid #ff79c6;
+        }
+
+        .legend-item h3 {
+            color: #8be9fd;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .legend-item p {
+            color: #ccc;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .legend-item code {
+            background: #000;
+            color: #50fa7b;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+
+        .shortcuts {
+            margin-top: 30px;
+            background: #252526;
+            padding: 20px;
+            border: 2px solid #50fa7b;
+            border-radius: 8px;
+        }
+
+        .shortcuts h2 {
+            color: #50fa7b;
+            margin-bottom: 15px;
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: #1e1e1e;
+            border-radius: 4px;
+        }
+
+        .shortcut-key {
+            background: #333;
+            color: #ff79c6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+        }
+
+        .print-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2d2d2d;
+            border-left: 4px solid #f1fa8c;
+            color: #f1fa8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📐 VSCode UI Parts Reference - Visual Guide</h1>
+
+        <div class="vscode-window">
+            <!-- Title Bar -->
+            <div class="ui-part title-bar">
+                <span class="label top-left">1. TITLE BAR</span>
+                <span>test.yaml - vscode_settings_setup - Visual Studio Code</span>
+            </div>
+
+            <div class="main-layout">
+                <!-- Activity Bar -->
+                <div class="ui-part activity-bar">
+                    <span class="label top-left">2. ACTIVITY BAR</span>
+                    <div class="activity-icon"></div>
+                    <div class="activity-icon"></div>
+                    <div class="activity-icon"></div>
+                    <div class="activity-icon"></div>
+                </div>
+
+                <!-- Side Bar -->
+                <div class="ui-part side-bar">
+                    <span class="label top-left">3. SIDE BAR</span>
+                    <div class="side-bar-header">Explorer</div>
+                    <div class="file-item">📁 test-files</div>
+                    <div class="file-item">&nbsp;&nbsp;&nbsp;📄 test.yaml</div>
+                    <div class="file-item">&nbsp;&nbsp;&nbsp;📄 test.json</div>
+                    <div class="file-item">&nbsp;&nbsp;&nbsp;📄 test.py</div>
+                    <div class="file-item">📁 docs</div>
+                    <div class="file-item">📁 scripts</div>
+                </div>
+
+                <!-- Editor Area -->
+                <div class="editor-area">
+                    <!-- Tab Bar -->
+                    <div class="ui-part tab-bar">
+                        <span class="label top-left">4. TAB BAR</span>
+                        <div class="tab active">test.yaml</div>
+                        <div class="tab">test.json</div>
+                        <div class="tab">test.py</div>
+                    </div>
+
+                    <!-- Breadcrumbs -->
+                    <div class="ui-part breadcrumbs">
+                        <span class="label top-left">5. BREADCRUMBS ⭐ YAML PATH HERE!</span>
+                        <span>test.yaml › person › contact › email</span>
+                    </div>
+
+                    <!-- Editor -->
+                    <div class="ui-part editor">
+                        <span class="label top-left">6. EDITOR</span>
+                        <div class="line-numbers">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                        </div>
+                        <div class="code-area">
+                            <div class="code-line"><span class="comment"># YAML Test File</span></div>
+                            <div class="code-line">person:</div>
+                            <div class="code-line">&nbsp;&nbsp;firstName: <span class="string">"John"</span></div>
+                            <div class="code-line">&nbsp;&nbsp;contact:</div>
+                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;email: <span class="string">"john@example.com"</span></div>
+                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;phone: <span class="string">"+1-555-0123"</span></div>
+                            <div class="code-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Panel -->
+                    <div class="ui-part panel">
+                        <span class="label top-left">7. PANEL</span>
+                        <div class="panel-tabs">
+                            <div class="panel-tab active">Terminal</div>
+                            <div class="panel-tab">Output</div>
+                            <div class="panel-tab">Problems</div>
+                            <div class="panel-tab">Debug Console</div>
+                        </div>
+                        <div class="panel-content">
+                            <div>$ ls -la</div>
+                            <div>total 64</div>
+                            <div>drwxr-xr-x  10 user  staff   320 Jan 10 12:00 .</div>
+                            <div>drwxr-xr-x   5 user  staff   160 Jan 10 11:00 ..</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="ui-part status-bar">
+                <span class="label bottom-left">8. STATUS BAR</span>
+                <div class="status-left">
+                    <span>🌿 main</span>
+                    <span>YAML</span>
+                    <span>UTF-8</span>
+                </div>
+                <div class="status-right">
+                    <span>Ln 5, Col 12</span>
+                    <span>Spaces: 2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h2>📚 UI Parts Detailed Reference</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <h3>1. Title Bar</h3>
+                    <p>Shows file name, folder, and window controls. On Mac, may include menu bar.</p>
+                    <p><code>titleBar.border</code> = your hot pink border</p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>2. Activity Bar</h3>
+                    <p>Vertical icons on the left: Files, Search, Git, Debug, Extensions.</p>
+                    <p><code>activityBar.border</code> = hot pink</p>
+                    <p>Toggle: Not recommended (you need those icons!)</p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>3. Side Bar</h3>
+                    <p>File explorer, search results, git changes. Content changes based on Activity Bar selection.</p>
+                    <p><code>sideBar.border</code> = hot pink</p>
+                    <p>Toggle: <code>Cmd+B</code></p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>4. Tab Bar</h3>
+                    <p>Shows all open files as tabs. Click to switch between files.</p>
+                    <p><code>tab.activeBorder</code> = hot pink</p>
+                    <p>Close tab: <code>Cmd+W</code></p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>5. Breadcrumbs ⭐</h3>
+                    <p><strong>THIS IS WHERE YAML PATH SHOWS!</strong> Also shows file path and code structure.</p>
+                    <p>For YAML: <code>person › contact › email</code></p>
+                    <p>For JSON: <code>metadata › author › name</code></p>
+                    <p><code>breadcrumbs.enabled: true</code> (you have this on!)</p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>6. Editor</h3>
+                    <p>Where you actually write code. Can split into multiple panes.</p>
+                    <p><code>editor.background</code> = pure black #000000</p>
+                    <p><code>editorGroup.border</code> = hot pink (for splits)</p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>7. Panel</h3>
+                    <p>Terminal, Output, Problems, Debug Console. Usually at bottom.</p>
+                    <p><code>panel.border</code> = hot pink</p>
+                    <p>Toggle: <code>Cmd+J</code></p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>8. Status Bar</h3>
+                    <p>Git branch, language, cursor position, errors/warnings. Clickable items!</p>
+                    <p><code>statusBar.border</code> = hot pink</p>
+                    <p>Always visible (can't toggle off)</p>
+                </div>
+
+                <div class="legend-item">
+                    <h3>Editor Parts</h3>
+                    <p><strong>Line Numbers:</strong> Left side, shows line numbers</p>
+                    <p><code>editorLineNumber.foreground</code> = bright cyan</p>
+                    <p><strong>Gutter:</strong> Breakpoints, git changes (left of line numbers)</p>
+                    <p><strong>Indent Guides:</strong> Vertical lines showing indentation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shortcuts -->
+        <div class="shortcuts">
+            <h2>⌨️ Essential Keyboard Shortcuts</h2>
+            <div class="shortcuts-grid">
+                <div class="shortcut-item">
+                    <span>Toggle Side Bar</span>
+                    <span class="shortcut-key">Cmd+B</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Toggle Panel</span>
+                    <span class="shortcut-key">Cmd+J</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Command Palette</span>
+                    <span class="shortcut-key">Cmd+Shift+P</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Quick Open Files</span>
+                    <span class="shortcut-key">Cmd+P</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Find in File</span>
+                    <span class="shortcut-key">Cmd+F</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Find in All Files</span>
+                    <span class="shortcut-key">Cmd+Shift+F</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Split Editor</span>
+                    <span class="shortcut-key">Cmd+\</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Close Tab</span>
+                    <span class="shortcut-key">Cmd+W</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Settings</span>
+                    <span class="shortcut-key">Cmd+,</span>
+                </div>
+                <div class="shortcut-item">
+                    <span>Zen Mode</span>
+                    <span class="shortcut-key">Cmd+K Z</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="print-note">
+            <strong>💡 Pro Tip:</strong> Press <code>Cmd+P</code> (Print) to save this as a PDF for quick reference!
+            Or keep this HTML file open in a browser tab whenever you need to look up VSCode UI part names.
+        </div>
+    </div>
+</body>
+</html>
