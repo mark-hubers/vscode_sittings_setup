@@ -127,10 +127,20 @@ Use this when setting up a new machine:
 - ✅ Click "Yes, I trust the authors" when prompted
 - ✅ Most extensions activate automatically
 
-### Step 3: Manually Reinstall These (They Need Trust Approval)
-- ✅ File Utils (sleistner.vscode-fileutils) - **REQUIRES MANUAL TRUST** ⚠️
-- ✅ File Properties Viewer (brunnerh.file-properties-viewer) - **REQUIRES MANUAL TRUST** ⚠️
-- ⬜ (Add others here as we discover them)
+### Step 3: Manually Reinstall ALL Extensions (They ALL Need Trust Approval)
+
+**IMPORTANT:** As of Jan 2026, VSCode requires manual trust for ALL extensions.
+You MUST install through the Extensions panel UI, NOT via command line.
+
+**Extensions requiring manual trust:**
+- ✅ File Utils (sleistner.vscode-fileutils)
+- ✅ File Properties Viewer (brunnerh.file-properties-viewer)
+- ✅ Error Lens (usernamehw.errorlens)
+- ✅ Prettier - Code formatter (esbenp.prettier-vscode)
+- ⬜ Indent Rainbow (will need trust)
+- ⬜ Better Comments (will need trust)
+- ⬜ Git Graph (will need trust)
+- ⬜ (All future extensions will need trust)
 
 ### Step 4: Restart VSCode
 - ✅ Cmd+Q to quit
@@ -150,10 +160,12 @@ Use this when setting up a new machine:
 
 ## Notes
 
-- **Extensions that require manual trust:** Document them here as we find them
-- **Command-line installed extensions:** Often skip trust prompts, install manually instead
-- **Profile export:** Re-export profile after installing extensions manually
-- **Trust is per-workspace:** New machines will ask to trust even if extensions are in profile
+- **ALL extensions require manual trust as of Jan 2026:** VSCode security update
+- **Command-line installed extensions:** Skip trust prompts = don't activate = DON'T USE
+- **ALWAYS install through Extensions panel UI:** Only way to approve trust
+- **Profile export:** Re-export profile after installing new extensions
+- **Trust is per-workspace:** New machines will ask to trust workspace + each extension
+- **No automation possible:** This is a security feature, can't be bypassed
 
 ---
 

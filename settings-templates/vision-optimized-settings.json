@@ -1,0 +1,402 @@
+{
+    // ============================================================================
+    // VISION-OPTIMIZED SETTINGS - HIGH CONTRAST, HIGH VISIBILITY
+    // ============================================================================
+    // Works in: VSCode, Cursor IDE, any VSCode fork
+    // Created: 2026-01-10
+    // For: Vision accessibility, easier reading, clear highlighting
+    // ============================================================================
+
+    // ============================================================================
+    // THEME SELECTION
+    // ============================================================================
+
+    // Current theme: Default Dark+ (most flexible for customization)
+    "workbench.colorTheme": "Default Dark+",
+
+    // High contrast fallback theme
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+
+    // ============================================================================
+    // COLOR CUSTOMIZATIONS - VISION OPTIMIZED
+    // ============================================================================
+
+    "workbench.colorCustomizations": {
+        // Theme-specific settings for Default Dark+
+        "[Default Dark+]": {
+
+            // ----------------------------------------------------------------
+            // CORE COLORS - Background and Text
+            // ----------------------------------------------------------------
+
+            // PURE BLACK background (not dark gray) - easier on eyes
+            "editor.background": "#000000",
+
+            // WHITE text for maximum contrast
+            "editor.foreground": "#ffffff",
+
+            // ----------------------------------------------------------------
+            // LINE NUMBERS - Navigation Aid
+            // ----------------------------------------------------------------
+
+            // Regular line numbers - BRIGHT CYAN (stands out)
+            "editorLineNumber.foreground": "#8be9fd",
+
+            // Active/current line number - BRIGHT GREEN ("you are here")
+            "editorLineNumber.activeForeground": "#50fa7b",
+
+            // ----------------------------------------------------------------
+            // INDENTATION GUIDES - Code Structure Visibility
+            // ----------------------------------------------------------------
+
+            // Regular indent guides - SUBTLE GRAY
+            "editorIndentGuide.background": "#6272a4",
+
+            // ACTIVE indent guide - HOT PINK (shows current code block)
+            "editorIndentGuide.activeBackground": "#ff79c6",
+
+            // Whitespace characters (spaces, tabs) - SUBTLE GRAY
+            "editorWhitespace.foreground": "#6272a4",
+
+            // ----------------------------------------------------------------
+            // CURRENT LINE HIGHLIGHTING
+            // ----------------------------------------------------------------
+
+            // Current line background - VERY DARK GRAY (subtle)
+            "editor.lineHighlightBackground": "#1a1a1a",
+
+            // Selected text background - MEDIUM GRAY
+            "editor.selectionBackground": "#44475a",
+
+            // ----------------------------------------------------------------
+            // BRACKET MATCHING - See Matching Pairs
+            // ----------------------------------------------------------------
+
+            // Matching bracket border - HOT PINK
+            "editorBracketMatch.border": "#ff79c6",
+
+            // Matching bracket fill - SEMI-TRANSPARENT PINK
+            "editorBracketMatch.background": "#ff79c633",
+
+            // ----------------------------------------------------------------
+            // FIND/SEARCH HIGHLIGHTING - YELLOW = Search Results
+            // ----------------------------------------------------------------
+
+            // Current search match - BRIGHT YELLOW BORDER (what you're on)
+            "editor.findMatchBorder": "#ffff00",
+
+            // Current search match fill - SEMI-TRANSPARENT YELLOW
+            "editor.findMatchBackground": "#ffaa0080",
+
+            // Other search matches - LIGHTER YELLOW
+            "editor.findMatchHighlightBackground": "#ffaa0050",
+
+            // Search range highlight
+            "editor.findRangeHighlightBackground": "#ffaa0030",
+
+            // ----------------------------------------------------------------
+            // WORD SELECTION HIGHLIGHTING - GREEN = Selected Word
+            // ----------------------------------------------------------------
+
+            // When you click a word - GREEN BORDER on all occurrences
+            "editor.wordHighlightBorder": "#00ff00",
+
+            // Word highlight fill - SEMI-TRANSPARENT GREEN
+            "editor.wordHighlightBackground": "#00ff6650",
+
+            // Strong highlight (write access) - BRIGHTER GREEN
+            "editor.wordHighlightStrongBorder": "#00ff00",
+            "editor.wordHighlightStrongBackground": "#00ff6670"
+        },
+
+        // ----------------------------------------------------------------
+        // GLOBAL COLOR OVERRIDES (Apply to ALL themes)
+        // ----------------------------------------------------------------
+
+        // Find/Search highlighting (global fallbacks)
+        "editor.findMatchBackground": "#ffaa0080",
+        "editor.findMatchHighlightBackground": "#ffaa0050",
+        "editor.findMatchBorder": "#ffff00",
+        "editor.findRangeHighlightBackground": "#ffaa0030",
+
+        // Word selection highlighting (global fallbacks)
+        "editor.wordHighlightBackground": "#00ff6650",
+        "editor.wordHighlightStrongBackground": "#00ff6670",
+        "editor.wordHighlightBorder": "#00ff00",
+        "editor.wordHighlightStrongBorder": "#00ff00",
+
+        // ----------------------------------------------------------------
+        // ALL BORDERS = HOT PINK (High Visibility)
+        // ----------------------------------------------------------------
+        // Every panel, tab, and window border is the same bright color
+        // so you can clearly see boundaries between UI elements
+
+        // Editor split/group borders
+        "editorGroup.border": "#ff79c6",
+        "editorGroupHeader.tabsBorder": "#ff79c6",
+
+        // Bottom panel border (terminal, output, problems, etc.)
+        "panel.border": "#ff79c6",
+
+        // Left sidebar border (file explorer)
+        "sideBar.border": "#ff79c6",
+        "sideBarSectionHeader.border": "#ff79c6",
+
+        // Tab borders (open files)
+        "tab.activeBorder": "#ff79c6",
+        "tab.activeBorderTop": "#ff79c6",
+
+        // Status bar border (bottom)
+        "statusBar.border": "#ff79c6",
+
+        // Title bar border (top)
+        "titleBar.border": "#ff79c6",
+
+        // Activity bar border (far left icon bar)
+        "activityBar.border": "#ff79c6",
+        "activityBarBadge.border": "#ff79c6",
+
+        // Widget borders (autocomplete popups, hover boxes)
+        "editorWidget.border": "#ff79c6",
+        "widget.border": "#ff79c6",
+
+        // Input field borders
+        "input.border": "#ff79c6",
+
+        // Dropdown menu borders
+        "dropdown.border": "#ff79c6",
+
+        // ----------------------------------------------------------------
+        // ADDITIONAL HIGHLIGHTING (TypeScript, PowerShell, etc.)
+        // ----------------------------------------------------------------
+
+        // Selection highlight (alternative highlighting system)
+        "editor.selectionHighlightBackground": "#00ff6650",
+        "editor.selectionHighlightBorder": "#00ff00",
+
+        // Find match text color (white for readability on yellow)
+        "editor.findMatchForeground": "#ffffff",
+
+        // Minimap/scrollbar indicators
+        "editorOverviewRuler.findMatchForeground": "#ffff00",
+        "editorOverviewRuler.wordHighlightForeground": "#00ff00",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#00ff00",
+
+        // ----------------------------------------------------------------
+        // HOVER AND SYMBOL HIGHLIGHTING
+        // ----------------------------------------------------------------
+
+        // Hover highlight (when mouse over a symbol)
+        "editor.hoverHighlightBackground": "#00ff6650",
+
+        // Linked editing (edit multiple occurrences)
+        "editor.linkedEditingBackground": "#00ff6650",
+
+        // Symbol highlight (TypeScript/PowerShell - same as word highlight)
+        "editor.symbolHighlightBackground": "#00ff6650",
+        "editor.symbolHighlightBorder": "#00ff00",
+
+        // ----------------------------------------------------------------
+        // BRACKET PAIR COLORIZATION (Rainbow Brackets)
+        // ----------------------------------------------------------------
+
+        // Nested brackets get different colors
+        "editorBracketHighlight.foreground1": "#50fa7b",  // Level 1: Green
+        "editorBracketHighlight.foreground2": "#f1fa8c",  // Level 2: Yellow
+        "editorBracketHighlight.foreground3": "#bd93f9"   // Level 3: Purple
+    },
+
+    // ============================================================================
+    // SYNTAX HIGHLIGHTING - CODE COLORS
+    // ============================================================================
+
+    "editor.tokenColorCustomizations": {
+        "[Default Dark+]": {
+            "textMateRules": [
+                {
+                    // COMMENTS - Bright cyan (NOT gray!)
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#8be9fd",  // Bright cyan
+                        "fontStyle": ""           // Not italic
+                    }
+                },
+                {
+                    // STRINGS - Yellow (like "hello world", 'test', etc.)
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#f1fa8c"   // Yellow
+                    }
+                },
+                {
+                    // KEYWORDS - Hot pink + bold (if, for, return, def, class, etc.)
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#ff79c6",  // Hot pink
+                        "fontStyle": "bold"       // Make keywords bold
+                    }
+                },
+                {
+                    // FUNCTIONS - Bright green + bold (function names)
+                    "scope": ["entity.name.function", "support.function"],
+                    "settings": {
+                        "foreground": "#50fa7b",  // Bright green
+                        "fontStyle": "bold"       // Make functions bold
+                    }
+                },
+                {
+                    // VARIABLES - White (default text color)
+                    "scope": "variable",
+                    "settings": {
+                        "foreground": "#ffffff"   // White
+                    }
+                },
+                {
+                    // NUMBERS - Purple (42, 3.14, 0xFF, etc.)
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#bd93f9"   // Purple
+                    }
+                },
+                {
+                    // PLAIN TEXT FILES - Bright green override
+                    // (This attempts to make .txt files green, but VSCode is stubborn)
+                    "scope": ["text.plain", "text"],
+                    "settings": {
+                        "foreground": "#00ff00"   // Bright green (may not work)
+                    }
+                }
+            ]
+        }
+    },
+
+    // ============================================================================
+    // PLAIN TEXT FILE OVERRIDES (Trying to make .txt files green)
+    // ============================================================================
+
+    "[plaintext]": {
+        "editor.foreground": "#00ff00",  // Attempt 1: Set plaintext to green
+        "editor.background": "#000000"   // Keep background black
+    },
+
+    "[log]": {
+        "editor.foreground": "#ffff00",  // Log files = yellow
+        "editor.background": "#000000"
+    },
+
+    // File type associations (force certain files to use specific modes)
+    "files.associations": {
+        "*.txt": "plaintext",
+        "*.log": "log",
+        "*.text": "plaintext",
+        "README": "plaintext",
+        "LICENSE": "plaintext"
+    },
+
+    // ============================================================================
+    // SEMANTIC HIGHLIGHTING - DISABLE FOR CONSISTENCY
+    // ============================================================================
+    // VSCode has multiple layers of syntax highlighting. Semantic highlighting
+    // can override your color settings. Turn it OFF for consistent colors.
+
+    // Global disable
+    "editor.semanticHighlighting.enabled": false,
+
+    // Per-language disables (belt and suspenders approach)
+    "[typescript]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[powershell]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[javascript]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+    "[python]": {
+        "editor.semanticHighlighting.enabled": false
+    },
+
+    // ============================================================================
+    // HIGHLIGHTING BEHAVIOR
+    // ============================================================================
+
+    // Highlight occurrences of selected word
+    "editor.occurrencesHighlight": "singleFile",
+
+    // Enable selection highlighting
+    "editor.selectionHighlight": true,
+
+    // Word-based suggestions (for autocomplete)
+    "editor.wordBasedSuggestions": "matchingDocuments",
+
+    // Show final newline indicator
+    "editor.renderFinalNewline": "on",
+
+    // Don't wrap lines (horizontal scroll instead)
+    "editor.wordWrap": "off",
+
+    // ============================================================================
+    // BRACKET PAIR COLORIZATION (Built-in Rainbow Brackets)
+    // ============================================================================
+
+    // Enable rainbow brackets (built into VSCode now)
+    "editor.bracketPairColorization.enabled": true,
+
+    // Each bracket type ({}, [], ()) gets own color pool
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+
+    // Show bracket pair guides (vertical lines)
+    "editor.guides.bracketPairs": "active",
+
+    // Show indentation guides
+    "editor.guides.indentation": true,
+
+    // Show ALL whitespace (spaces, tabs, etc.)
+    "editor.renderWhitespace": "all",
+
+    // ============================================================================
+    // FONT SETTINGS
+    // ============================================================================
+
+    // Font size - 14pt (adjust as needed for your vision)
+    "editor.fontSize": 14,
+
+    // Line height - 22 (more space between lines = easier to read)
+    "editor.lineHeight": 22,
+
+    // Cursor - solid, not blinking (easier to track)
+    "editor.cursorBlinking": "solid",
+
+    // Cursor width - 2px (visible but not huge)
+    "editor.cursorWidth": 2,
+
+    // ============================================================================
+    // UI PREFERENCES
+    // ============================================================================
+
+    // DISABLE minimap (hard to see, wastes screen space)
+    "editor.minimap.enabled": false,
+
+    // ENABLE breadcrumbs (shows file path and code structure at top)
+    // CRITICAL for YAML files - shows path like: person › contact › email
+    "breadcrumbs.enabled": true
+
+    // ============================================================================
+    // END OF VISION-OPTIMIZED SETTINGS
+    // ============================================================================
+    // Copy this entire file into your settings.json
+    // Location:
+    //   VSCode:  ~/Library/Application Support/Code/User/settings.json
+    //   Cursor:  ~/Library/Application Support/Cursor/User/settings.json
+    //
+    // After pasting:
+    //   1. Save the file (Cmd+S)
+    //   2. RESTART the editor (Cmd+Q, then reopen)
+    //   3. Test with the test files in test-files/ directory
+    //
+    // To customize:
+    //   - Change any hex color (#ffffff, #ff79c6, etc.)
+    //   - Adjust fontSize and lineHeight as needed
+    //   - Add/remove language-specific overrides
+    // ============================================================================
+}
